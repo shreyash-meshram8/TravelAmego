@@ -1,0 +1,1831 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    color: #222;
+    transition: background 0.3s, color 0.3s;
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+header {
+    background: #4fc3f7;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#site-title {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    animation: titleFadeIn 2s;
+}
+
+@keyframes titleFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 0.8rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+    width: 60px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.theme-icon {
+    position: absolute;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+.sun-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.moon-icon {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+/* Dark Theme Toggle States */
+body.dark-theme .sun-icon {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+body.dark-theme .moon-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Section Styles */
+.section {
+    min-height: 100vh;
+    padding: 80px 0 0 0;
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Hero Section */
+#hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    animation: backgroundMove 20s infinite linear;
+}
+
+@keyframes backgroundMove {
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(-100px) translateY(-100px); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.logo-container {
+    margin-bottom: 2rem;
+}
+
+.logo {
+    font-size: 4rem;
+    font-weight: bold;
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    animation: slideInFromBottom 1s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    animation: slideInFromBottom 1s ease-out 0.3s both;
+}
+
+.cta-button {
+    background: #fff;
+    color: #667eea;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    animation: slideInFromBottom 1s ease-out 0.6s both;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animated Scenes Section - Compact Layout */
+#about-section {
+    background: #fff;
+    padding: 40px 0 20px 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s;
+}
+
+.section-title.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Compact Scene Container Styles */
+.scene-container {
+    height: 20vh;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    margin-bottom: 5px;
+}
+
+.scene {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.scene-text {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    z-index: 10;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.scene-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.scene-text p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Compact Character Styles */
+.character {
+    position: absolute;
+    bottom: 30px;
+    z-index: 5;
+}
+
+.person {
+    position: relative;
+    width: 40px;
+    height: 80px;
+}
+
+.head {
+    width: 20px;
+    height: 20px;
+    background: #ffdbac;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
+
+.body {
+    width: 25px;
+    height: 30px;
+    background: #4a90e2;
+    position: absolute;
+    top: 15px;
+    left: 7px;
+    border-radius: 3px;
+}
+
+.legs {
+    position: absolute;
+    bottom: 0;
+    left: 7px;
+    display: flex;
+    gap: 3px;
+}
+
+.leg {
+    width: 10px;
+    height: 25px;
+    background: #2c3e50;
+    border-radius: 2px;
+}
+
+.arms {
+    position: absolute;
+    top: 20px;
+    left: 3px;
+    display: flex;
+    gap: 20px;
+}
+
+.arm {
+    width: 8px;
+    height: 20px;
+    background: #ffdbac;
+    border-radius: 2px;
+}
+
+.backpack {
+    width: 15px;
+    height: 20px;
+    background: #8b4513;
+    position: absolute;
+    top: 20px;
+    right: 3px;
+    border-radius: 2px;
+}
+
+.hat {
+    width: 22px;
+    height: 10px;
+    background: #8b4513;
+    position: absolute;
+    top: -3px;
+    left: -1px;
+    border-radius: 50% 50% 0 0;
+}
+
+/* Compact Mountains Scene */
+.mountains-scene {
+    background: linear-gradient(to bottom, #87ceeb 0%, #98fb98 100%);
+}
+
+.mountain {
+    position: absolute;
+    bottom: 0;
+    background: #8b4513;
+    border-radius: 50% 50% 0 0;
+}
+
+.mountain-1 {
+    width: 120px;
+    height: 80px;
+    left: 10%;
+    background: linear-gradient(45deg, #8b4513, #a0522d);
+}
+
+.mountain-2 {
+    width: 90px;
+    height: 60px;
+    left: 30%;
+    background: linear-gradient(45deg, #a0522d, #cd853f);
+}
+
+.mountain-3 {
+    width: 110px;
+    height: 70px;
+    left: 60%;
+    background: linear-gradient(45deg, #cd853f, #deb887);
+}
+
+.clouds {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    height: 50px;
+}
+
+.cloud {
+    position: absolute;
+    background: white;
+    border-radius: 30px;
+    opacity: 0.8;
+}
+
+.cloud-1 {
+    width: 50px;
+    height: 25px;
+    top: 10px;
+    left: 20%;
+}
+
+.cloud-2 {
+    width: 40px;
+    height: 20px;
+    top: 20px;
+    left: 60%;
+}
+
+.cloud-3 {
+    width: 60px;
+    height: 30px;
+    top: 5px;
+    left: 80%;
+}
+
+/* Compact Beach Scene */
+.beach-scene {
+    background: linear-gradient(to bottom, #87ceeb 0%, #f0e68c 50%, #f4a460 100%);
+}
+
+.ocean {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to bottom, #4682b4, #1e90ff);
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 12px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+}
+
+.wave-1 { bottom: 0; }
+.wave-2 { bottom: 6px; }
+.wave-3 { bottom: 12px; }
+
+.sand {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+    background: #f4a460;
+}
+
+.palm-trees {
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
+}
+
+.palm-tree {
+    position: absolute;
+    bottom: 0;
+    width: 12px;
+    height: 50px;
+    background: #8b4513;
+}
+
+.palm-1 { left: 20%; }
+.palm-2 { right: 30%; }
+
+.sun {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 35px;
+    height: 35px;
+    background: #ffd700;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #ffd700;
+}
+
+/* Compact Desert Scene */
+.desert-scene {
+    background: linear-gradient(to bottom, #ffd700 0%, #f4a460 100%);
+}
+
+.desert-sand {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.dune {
+    position: absolute;
+    bottom: 0;
+    background: #deb887;
+    border-radius: 50% 50% 0 0;
+}
+
+.dune-1 {
+    width: 180px;
+    height: 70px;
+    left: 10%;
+    background: linear-gradient(45deg, #deb887, #f4a460);
+}
+
+.dune-2 {
+    width: 150px;
+    height: 60px;
+    left: 50%;
+    background: linear-gradient(45deg, #f4a460, #daa520);
+}
+
+.dune-3 {
+    width: 120px;
+    height: 50px;
+    left: 80%;
+    background: linear-gradient(45deg, #daa520, #b8860b);
+}
+
+.cactus {
+    position: absolute;
+    bottom: 0;
+    left: 70%;
+    z-index: 2;
+}
+
+.cactus-main {
+    width: 18px;
+    height: 60px;
+    background: #228b22;
+    border-radius: 9px;
+}
+
+.cactus-arm {
+    position: absolute;
+    width: 12px;
+    height: 25px;
+    background: #228b22;
+    border-radius: 6px;
+}
+
+.cactus-arm.arm-1 {
+    top: 20px;
+    left: -10px;
+    transform: rotate(-30deg);
+}
+
+.cactus-arm.arm-2 {
+    top: 35px;
+    right: -10px;
+    transform: rotate(30deg);
+}
+
+.desert-sun {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background: #ff4500;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #ff4500;
+}
+
+/* Compact Temple Scene */
+.temple-scene {
+    background: linear-gradient(to bottom, #87ceeb 0%, #98fb98 100%);
+}
+
+.temple {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.temple-base {
+    width: 120px;
+    height: 45px;
+    background: linear-gradient(45deg, #8b4513, #a0522d);
+    border-radius: 6px;
+}
+
+.temple-top {
+    width: 90px;
+    height: 35px;
+    background: linear-gradient(45deg, #cd853f, #deb887);
+    position: absolute;
+    top: -35px;
+    left: 15px;
+    border-radius: 6px 6px 0 0;
+}
+
+.temple-pillars {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.pillar {
+    width: 12px;
+    height: 35px;
+    background: #8b4513;
+    border-radius: 3px;
+}
+
+.temple-stairs {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 25px;
+    background: linear-gradient(to bottom, #a0522d, #8b4513);
+    border-radius: 6px 6px 0 0;
+}
+
+.temple-garden {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15%;
+}
+
+.tree {
+    position: absolute;
+    bottom: 0;
+    width: 18px;
+    height: 35px;
+    background: #228b22;
+    border-radius: 9px;
+}
+
+.tree-1 { left: 20%; }
+.tree-2 { right: 20%; }
+
+/* Character Animations */
+.hiker {
+    animation: walk 2s infinite;
+}
+
+.beach-walker {
+    animation: walk 2.5s infinite;
+}
+
+.desert-explorer {
+    animation: walk 1.8s infinite;
+}
+
+.temple-visitor {
+    animation: walk 2.2s infinite;
+}
+
+@keyframes walk {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(3px) translateY(-1px); }
+    50% { transform: translateX(6px); }
+    75% { transform: translateX(3px) translateY(-1px); }
+}
+
+/* Transportation Section */
+#transportation-section {
+    background: #f8f9fa;
+    padding: 100px 0;
+    min-height: 100vh;
+}
+
+.transport-container {
+    height: 20vh;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.transport-scene {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.transport-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.transport-vehicle {
+    position: absolute;
+    z-index: 5;
+    bottom: 20px;
+}
+
+/* Bus Scene */
+.bus-scene {
+    background: linear-gradient(to bottom, #87ceeb 0%, #98fb98 100%);
+}
+
+.bus-bg {
+    position: relative;
+}
+
+.road {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    background: #696969;
+}
+
+.road-line {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 4px;
+    background: #fff;
+    transform: translateY(-50%);
+}
+
+.road-line:nth-child(1) { top: 30%; }
+.road-line:nth-child(2) { top: 50%; }
+.road-line:nth-child(3) { top: 70%; }
+
+.trees {
+    position: absolute;
+    bottom: 30%;
+    width: 100%;
+}
+
+.tree {
+    position: absolute;
+    bottom: 0;
+    width: 15px;
+    height: 60px;
+    background: #228b22;
+    border-radius: 8px;
+}
+
+.tree-left-1 { left: 10%; }
+.tree-left-2 { left: 20%; }
+.tree-right-1 { right: 20%; }
+.tree-right-2 { right: 10%; }
+
+.buildings {
+    position: absolute;
+    bottom: 30%;
+    width: 100%;
+}
+
+.building {
+    position: absolute;
+    bottom: 0;
+    background: #708090;
+    border-radius: 5px 5px 0 0;
+}
+
+.building-1 {
+    width: 40px;
+    height: 80px;
+    left: 60%;
+}
+
+.building-2 {
+    width: 35px;
+    height: 70px;
+    left: 70%;
+}
+
+.building-3 {
+    width: 45px;
+    height: 90px;
+    left: 80%;
+}
+
+/* Bus Vehicle */
+.bus {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bus-body {
+    width: 120px;
+    height: 60px;
+    background: #ff6b35;
+    border-radius: 10px;
+    position: relative;
+}
+
+.bus-windows {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.window {
+    width: 25px;
+    height: 20px;
+    background: #87ceeb;
+    border-radius: 3px;
+}
+
+.bus-door {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    width: 20px;
+    height: 30px;
+    background: #ff6b35;
+    border-radius: 3px 3px 0 0;
+}
+
+.bus-wheels {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 60px;
+}
+
+.wheel {
+    width: 20px;
+    height: 20px;
+    background: #333;
+    border-radius: 50%;
+    border: 3px solid #666;
+}
+
+/* Train Scene */
+.train-scene {
+    background: linear-gradient(to bottom, #87ceeb 0%, #98fb98 100%);
+}
+
+.train-bg {
+    position: relative;
+}
+
+.tracks {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+    background: #8b4513;
+}
+
+.track {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 8px;
+    background: #333;
+    transform: translateY(-50%);
+}
+
+.track:nth-child(1) { top: 30%; }
+.track:nth-child(2) { top: 70%; }
+
+.tunnel {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 80px;
+    background: #696969;
+    border-radius: 50% 50% 0 0;
+}
+
+.train-mountain-1 {
+    width: 100px;
+    height: 60px;
+    left: 10%;
+    bottom: 20%;
+    background: linear-gradient(45deg, #8b4513, #a0522d);
+    border-radius: 50% 50% 0 0;
+}
+
+.train-mountain-2 {
+    width: 80px;
+    height: 50px;
+    right: 10%;
+    bottom: 20%;
+    background: linear-gradient(45deg, #a0522d, #cd853f);
+    border-radius: 50% 50% 0 0;
+}
+
+.train-trees .tree {
+    width: 12px;
+    height: 40px;
+}
+
+.train-tree-1 { left: 5%; }
+.train-tree-2 { left: 15%; }
+.train-tree-3 { right: 15%; }
+
+/* Train Vehicle */
+.train {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.train-body {
+    display: flex;
+    align-items: flex-end;
+}
+
+.train-engine {
+    width: 80px;
+    height: 50px;
+    background: #333;
+    border-radius: 10px;
+    position: relative;
+}
+
+.train-window {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 15px;
+    background: #87ceeb;
+    border-radius: 2px;
+}
+
+.train-smoke {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    width: 8px;
+    height: 20px;
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.train-carriage {
+    width: 100px;
+    height: 40px;
+    background: #4a90e2;
+    border-radius: 8px;
+    margin-left: 5px;
+    position: relative;
+}
+
+.train-windows {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    display: flex;
+    gap: 8px;
+}
+
+.train-wheels {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+}
+
+/* Plane Scene */
+.plane-scene {
+    background: linear-gradient(to bottom, #87ceeb 0%, #4682b4 100%);
+}
+
+.plane-bg {
+    position: relative;
+}
+
+.sky {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.plane-cloud-1 {
+    width: 60px;
+    height: 30px;
+    background: white;
+    border-radius: 30px;
+    position: absolute;
+    top: 20px;
+    left: 20%;
+    opacity: 0.8;
+}
+
+.plane-cloud-2 {
+    width: 40px;
+    height: 20px;
+    background: white;
+    border-radius: 20px;
+    position: absolute;
+    top: 40px;
+    left: 60%;
+    opacity: 0.8;
+}
+
+.plane-cloud-3 {
+    width: 50px;
+    height: 25px;
+    background: white;
+    border-radius: 25px;
+    position: absolute;
+    top: 60px;
+    left: 80%;
+    opacity: 0.8;
+}
+
+.plane-cloud-4 {
+    width: 35px;
+    height: 18px;
+    background: white;
+    border-radius: 18px;
+    position: absolute;
+    top: 80px;
+    left: 40%;
+    opacity: 0.8;
+}
+
+.plane-sun {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    background: #ffd700;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #ffd700;
+}
+
+/* Plane Vehicle */
+.plane {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.plane-body {
+    position: relative;
+}
+
+.plane-fuselage {
+    width: 100px;
+    height: 30px;
+    background: #fff;
+    border-radius: 15px;
+    position: relative;
+}
+
+.plane-windows {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.plane-wings {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+}
+
+.wing {
+    position: absolute;
+    width: 60px;
+    height: 8px;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.wing-left {
+    left: -50px;
+    transform: rotate(-15deg);
+}
+
+.wing-right {
+    right: -50px;
+    transform: rotate(15deg);
+}
+
+.plane-tail {
+    position: absolute;
+    top: -15px;
+    right: 0;
+    width: 15px;
+    height: 20px;
+    background: #fff;
+    border-radius: 3px;
+}
+
+.plane-landing-gear {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+}
+
+.gear {
+    width: 8px;
+    height: 15px;
+    background: #333;
+    border-radius: 4px;
+}
+
+/* Ship Scene */
+.ship-scene {
+    background: linear-gradient(to bottom, #87ceeb 0%, #4682b4 100%);
+}
+
+.ship-bg {
+    position: relative;
+}
+
+.ship-ocean {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to bottom, #4682b4, #1e90ff);
+}
+
+.ship-wave-1 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 8px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+}
+
+.ship-wave-2 {
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    height: 6px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+}
+
+.ship-wave-3 {
+    position: absolute;
+    bottom: 14px;
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+}
+
+.islands {
+    position: absolute;
+    bottom: 40%;
+    width: 100%;
+}
+
+.island {
+    position: absolute;
+    bottom: 0;
+    background: #8fbc8f;
+    border-radius: 50% 50% 0 0;
+}
+
+.island-1 {
+    width: 60px;
+    height: 30px;
+    left: 20%;
+}
+
+.island-2 {
+    width: 40px;
+    height: 20px;
+    right: 30%;
+}
+
+.ship-sky {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 60%;
+}
+
+.ship-cloud-1 {
+    width: 50px;
+    height: 25px;
+    background: white;
+    border-radius: 25px;
+    position: absolute;
+    top: 30px;
+    left: 10%;
+    opacity: 0.8;
+}
+
+.ship-cloud-2 {
+    width: 35px;
+    height: 18px;
+    background: white;
+    border-radius: 18px;
+    position: absolute;
+    top: 50px;
+    right: 20%;
+    opacity: 0.8;
+}
+
+/* Ship Vehicle */
+.ship {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ship-body {
+    position: relative;
+}
+
+.ship-hull {
+    width: 120px;
+    height: 40px;
+    background: #8b4513;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+}
+
+.ship-windows {
+    position: absolute;
+    top: 8px;
+    left: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.ship-deck {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 20px;
+    background: #deb887;
+    border-radius: 5px;
+}
+
+.ship-cabin {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 15px;
+    background: #8b4513;
+    border-radius: 3px;
+}
+
+.ship-mast {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 20px;
+    background: #8b4513;
+}
+
+.ship-flag {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 10px;
+    background: #ff0000;
+    border-radius: 2px;
+}
+
+.ship-wake {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+.wake-line {
+    width: 2px;
+    height: 15px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 1px;
+}
+
+/* GSAP Animation Classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.fade-in.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
+.slide-in-left.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(100px);
+}
+
+.slide-in-right.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scale-in {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+.scale-in.animate {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Destinations Section */
+#destinations-section {
+    background: #f8f9fa;
+    padding: 100px 0;
+}
+
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.destination-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.destination-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.destination-image {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.destination-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.destination-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Contact Section */
+#contact-section {
+    background: #333;
+    color: white;
+    padding: 100px 0;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.contact-info h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.contact-details p {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: #444;
+    color: white;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #aaa;
+}
+
+.contact-form button {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-form button:hover {
+    background: #5a6fd8;
+}
+
+/* Footer */
+footer {
+    background: #1976d2;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* Dark Theme */
+body.dark-theme {
+    background: #222;
+    color: #f5f7fa;
+}
+
+body.dark-theme header {
+    background: #1976d2;
+    color: #fff;
+}
+
+body.dark-theme #about-section {
+    background: #333;
+    color: #f5f7fa;
+}
+
+body.dark-theme .stat {
+    background: #444;
+    color: #f5f7fa;
+}
+
+body.dark-theme #destinations-section {
+    background: #2a2a2a;
+}
+
+body.dark-theme .destination-card {
+    background: #444;
+    color: #f5f7fa;
+}
+
+body.dark-theme .destination-card h3 {
+    color: #f5f7fa;
+}
+
+body.dark-theme .destination-card p {
+    color: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .destinations-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .scene-container {
+        height: 18vh;
+        margin-bottom: 3px;
+    }
+    
+    .scene-text h3 {
+        font-size: 1.2rem;
+    }
+    
+    .scene-text p {
+        font-size: 0.8rem;
+    }
+    
+    .transport-container {
+        height: 18vh;
+        margin-bottom: 15px;
+    }
+    
+    .theme-toggle {
+        width: 50px;
+        height: 35px;
+    }
+    
+    .theme-icon {
+        font-size: 1rem;
+    }
+    
+    #about-section {
+        padding: 20px 0 10px 0;
+        height: 100vh;
+    }
+}
+
+/* Custom Theme Toggle Switch */
+.custom-theme-toggle {
+    width: 90px;
+    height: 38px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    margin-left: 1rem;
+}
+.toggle-track {
+    width: 90px;
+    height: 38px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #ffe066 0%, #b3e0ff 100%);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.5s;
+}
+.toggle-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.5s;
+}
+.day-bg {
+    background: linear-gradient(90deg, #ffe066 0%, #b3e0ff 100%);
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+.night-bg {
+    background: linear-gradient(90deg, #232946 0%, #444857 100%);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+body.dark-theme .custom-theme-toggle .day-bg {
+    opacity: 0;
+}
+body.dark-theme .custom-theme-toggle .night-bg {
+    opacity: 1;
+}
+
+/* Clouds for Day */
+.cloud {
+    position: absolute;
+    bottom: 8px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+.cloud-1 {
+    left: 18px;
+    width: 18px; height: 12px;
+}
+.cloud-2 {
+    left: 34px;
+    width: 14px; height: 10px;
+}
+
+/* Stars for Night */
+.star {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.85;
+}
+.star-1 { left: 20px; top: 10px; width: 3px; height: 3px; }
+.star-2 { left: 35px; top: 18px; width: 2px; height: 2px; }
+.star-3 { left: 50px; top: 8px; width: 2.5px; height: 2.5px; }
+.star-4 { left: 60px; top: 20px; width: 2px; height: 2px; }
+
+/* Toggle Knob */
+.toggle-knob {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: transparent;
+    z-index: 2;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+    transition: left 0.5s cubic-bezier(.77,0,.18,1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.knob-sun {
+    width: 28px;
+    height: 28px;
+    background: #ffe066;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ffe06699;
+    position: absolute;
+    left: 2px; top: 2px;
+    transition: opacity 0.5s;
+    opacity: 1;
+}
+.knob-moon {
+    width: 28px;
+    height: 28px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    position: absolute;
+    left: 2px; top: 2px;
+    box-shadow: 0 0 8px #b3b3b399;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.moon-crater {
+    position: absolute;
+    background: #b3b3b3;
+    border-radius: 50%;
+    opacity: 0.5;
+}
+.crater-1 { left: 7px; top: 7px; width: 5px; height: 5px; }
+.crater-2 { left: 15px; top: 13px; width: 3px; height: 3px; }
+.crater-3 { left: 10px; top: 18px; width: 2.5px; height: 2.5px; }
+
+body.dark-theme .toggle-knob {
+    left: 55px;
+}
+body.dark-theme .knob-sun {
+    opacity: 0;
+}
+body.dark-theme .knob-moon {
+    opacity: 1;
+}
+
+/* Accessibility focus */
+.custom-theme-toggle:focus {
+    outline: 2px solid #1976d2;
+    outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+    .custom-theme-toggle, .toggle-track {
+        width: 60px;
+        height: 28px;
+    }
+    .toggle-knob {
+        width: 20px;
+        height: 20px;
+        top: 2px;
+        left: 2px;
+    }
+    body.dark-theme .toggle-knob {
+        left: 36px;
+    }
+    .knob-sun, .knob-moon {
+        width: 16px;
+        height: 16px;
+        left: 2px; top: 2px;
+    }
+    .cloud-1 { left: 10px; width: 10px; height: 7px; }
+    .cloud-2 { left: 18px; width: 8px; height: 6px; }
+    .star-1 { left: 10px; top: 5px; width: 2px; height: 2px; }
+    .star-2 { left: 20px; top: 10px; width: 1.5px; height: 1.5px; }
+    .star-3 { left: 28px; top: 4px; width: 1.5px; height: 1.5px; }
+    .star-4 { left: 34px; top: 12px; width: 1px; height: 1px; }
+}
+
+.realistic-mountains {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: none;
+    overflow: visible;
+}
+.mountain-svg-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+.realistic-hiker {
+    position: absolute;
+    left: 18%;
+    bottom: 0;
+    z-index: 2;
+    width: 60px;
+    height: 120px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+@media (max-width: 768px) {
+    .realistic-hiker {
+        width: 36px;
+        height: 72px;
+        left: 10%;
+    }
+    .mountain-svg-bg {
+        height: 100%;
+    }
+}
+
+.realistic-plane-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: none;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.plane-bg-svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+.realistic-plane-wrapper {
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 180px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.realistic-plane-svg {
+    width: 180px;
+    height: 60px;
+    display: block;
+}
+.plane-cloud-svg {
+    opacity: 0.9;
+    transition: transform 1.5s cubic-bezier(.77,0,.18,1);
+}
+@media (max-width: 768px) {
+    .realistic-plane-wrapper {
+        width: 100px;
+        height: 34px;
+        left: 5%;
+    }
+    .realistic-plane-svg {
+        width: 100px;
+        height: 34px;
+    }
+} 
